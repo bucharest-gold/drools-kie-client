@@ -6,7 +6,8 @@
   "scripts": {
     "test": "tape test/*-test.js",
     "lint": "jshint index.js lib/*.js test/*.js",
-    "coverage": "./node_modules/.bin/istanbul cover tape -- test/**.js"
+    "coverage": "./node_modules/.bin/istanbul cover tape -- test/**.js",
+    "docs": "./node_modules/.bin/jsdoc -d docs -t ./node_modules/ink-docstrap/template -R README.md lib/drools-kie-client.js"
   },
   "keywords": [
     "Drools",

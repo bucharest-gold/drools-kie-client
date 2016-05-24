@@ -27,6 +27,6 @@ then
 fi
 
 cd drools-workshop/drools-server-swarm/target
-java -Djava.net.preferIPv4Stack=true -Dkie.maven.settings.custom=../src/main/resources/settings.xml -jar drools-server-swarm-1.0-SNAPSHOT-swarm.jar > drools.log 2>&1 &
+java -Djava.net.preferIPv4Stack=true -Dkie.maven.settings.custom=../src/main/resources/settings.xml -jar drools-server-swarm-1.0-SNAPSHOT-swarm.jar > ../../../drools.log 2>&1 &
 
 waitForServer

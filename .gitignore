@@ -1,0 +1,6 @@
+drools-workshop
+*.log
+node_modules
+coverage
+docs
+.vscode

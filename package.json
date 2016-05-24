@@ -1,0 +1,32 @@
+{
+  "name": "drools-kie-client",
+  "version": "0.1.0",
+  "description": "Node.js client for Drools KIE server API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*-test.js",
+    "lint": "jshint index.js lib/*.js test/*.js",
+    "coverage": "./node_modules/.bin/istanbul cover tape -- test/**.js"
+  },
+  "keywords": [
+    "Drools",
+    "KIE",
+    "REST",
+    "Client"
+  ],
+  "author": "Red Hat, Inc.",
+  "engines": {
+    "node": ">= 5.0.0"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "ink-docstrap": "^1.1.4",
+    "istanbul": "^0.4.3",
+    "jsdoc": "^3.4.0",
+    "jshint": "^2.9.2",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "request": "^2.72.0"
+  }
+}

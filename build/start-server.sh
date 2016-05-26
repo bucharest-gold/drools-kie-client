@@ -18,15 +18,9 @@ function waitForServer {
   done
 }
 
-if [ ! -d "../drools-workshop" ] 
-then
-    git clone https://github.com/Salaboy/drools-workshop.git
-    cd drools-workshop/drools-server-swarm/
-    mvn clean install -q
-    cd ../../
-fi
+docker pull jboss/kie-server-showcase:6.4.0.Final
+docker run -p 8080:8080 -d --name kie-server-showcase jboss/kie-server-showcase:6.4.0.Final  > drools.log 2>&1 &
 
-cd drools-workshop/drools-server-swarm/target
-java -Djava.net.preferIPv4Stack=true -Dkie.maven.settings.custom=../src/main/resources/settings.xml -jar drools-server-swarm-1.0-SNAPSHOT-swarm.jar > ../../../drools.log 2>&1 &
+sleep 1
 
 waitForServer

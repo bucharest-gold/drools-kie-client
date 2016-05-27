@@ -24,11 +24,21 @@ test('setup', t => {
   t.end();
 });
 
-test('The client should foo.', t => {
+test('The client should return the server information.', t => {
+
+  client({}).info()
+    .then(x => {
+      t.equal(x.msg, 'Kie Server info');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should return the containers.', t => {
 
   client({}).containers()
     .then(x => {
-      console.log(x);
+      t.equal(x.msg, 'List of created containers');
       t.end();
     }).catch(e => console.log(e));
 

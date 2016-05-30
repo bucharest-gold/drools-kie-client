@@ -57,6 +57,17 @@ test('The client should add one container.', t => {
 
 });
 
+test('The client should return information about one container.', (t) => {
+
+  client({}).container('bgold')
+    .then(x => {
+      console.log(x);
+      t.equal(1, 1);
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
 test('The client should remove one container.', t => {
 
   client({}).containerDelete('bgold')

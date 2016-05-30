@@ -34,10 +34,46 @@ test('The client should return the server information.', t => {
 
 });
 
+test('The client should add one container.', t => {
+
+  let container = {
+    "status": null,
+    "messages": [],
+    "container-id": "bgold",
+    "release-id": {
+      "version": "1.0",
+      "group-id": "org.bgold",
+      "artifact-id": "bgold"
+    },
+    "config-items": []
+  };
+
+  client({}).containerAdd(container)
+    .then(x => {
+      console.log(x);
+      t.equal(1, 1);
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should remove one container.', t => {
+
+  client({}).containerDelete('bgold')
+    .then(x => {
+      console.log(x);
+      t.equal(1, 1);
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+
 test('The client should return the containers.', t => {
 
   client({}).containers()
     .then(x => {
+      console.log(x);
       t.equal(x.msg, 'List of created containers');
       t.end();
     }).catch(e => console.log(e));

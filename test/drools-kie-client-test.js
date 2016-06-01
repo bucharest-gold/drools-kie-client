@@ -103,7 +103,6 @@ test('The client should update scanner.', t => {
 
   client({}).scannerUpdate('bgold', scanner)
     .then(x => {
-      console.log(x);
       t.equal(x.type, 'SUCCESS');
       t.end();
     }).catch(e => console.log(e));

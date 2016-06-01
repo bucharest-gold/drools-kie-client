@@ -3,3 +3,9 @@ node_modules
 coverage
 docs
 .vscode
+wildfly-8.2.1.Final.zip
+kie-server-distribution-6.4.0.Final.zip
+*.war
+bgold-kie-server.xml
+test/fixtures/kjar/target/
+wildfly-8.2.1.Final/

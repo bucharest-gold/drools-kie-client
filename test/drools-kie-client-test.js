@@ -50,8 +50,7 @@ test('The client should add one container.', t => {
 
   client({}).containerAdd(container)
     .then(x => {
-      console.log(x);
-      t.equal(1, 1);
+      t.equal(x.type, 'SUCCESS');
       t.end();
     }).catch(e => console.log(e));
 
@@ -61,8 +60,85 @@ test('The client should return information about one container.', (t) => {
 
   client({}).container('bgold')
     .then(x => {
+      t.equal(x.type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should return the containers.', t => {
+
+  client({}).containers()
+    .then(x => {
+      t.equal(x.result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should get the release id information of the container.', t => {
+  client({}).release('bgold')
+    .then(x => {
+      t.equal(x.type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should get the scanner information of the container.', t => {
+  client({}).scanner('bgold')
+    .then(x => {
+      t.equal(x.type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should update scanner.', t => {
+
+  let scanner = {
+    "status": "STARTED",
+    "poll-interval": 10000
+  };
+
+  client({}).scannerUpdate('bgold', scanner)
+    .then(x => {
       console.log(x);
-      t.equal(1, 1);
+      t.equal(x.type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should update the release.', t => {
+
+  let release = {
+    "version": "1.1",
+    "group-id": "org.bgold.kieserver",
+    "artifact-id": "bgold"
+  };
+
+  client({}).releaseUpdate('bgold', release)
+    .then(x => {
+      console.log(x);
+      //t.equal(x.type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+
+});
+
+test('The client should execute commands.', t => {
+
+  let commands = {
+    "commands": [
+      { "insert": { "object": "testBgold" } },
+      { "fire-all-rules": {} }
+    ]
+  };
+
+  client({}).executeCommand('bgold', commands)
+    .then(x => {
+      t.equal(x.type, 'SUCCESS');
       t.end();
     }).catch(e => console.log(e));
 
@@ -72,20 +148,7 @@ test('The client should remove one container.', t => {
 
   client({}).containerDelete('bgold')
     .then(x => {
-      console.log(x);
-      t.equal(1, 1);
-      t.end();
-    }).catch(e => console.log(e));
-
-});
-
-
-test('The client should return the containers.', t => {
-
-  client({}).containers()
-    .then(x => {
-      console.log(x);
-      t.equal(x.msg, 'List of created containers');
+      t.equal(x.type, 'SUCCESS');
       t.end();
     }).catch(e => console.log(e));
 

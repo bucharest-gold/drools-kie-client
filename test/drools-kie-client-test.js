@@ -42,7 +42,7 @@ test('The client should add one container.', t => {
     "container-id": "bgold",
     "release-id": {
       "version": "1.0",
-      "group-id": "org.bgold",
+      "group-id": "org.bgold.kieserver",
       "artifact-id": "bgold"
     },
     "config-items": []

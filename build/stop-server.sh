@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
+wildfly-8.2.1.Final/bin/jboss-cli.sh --connect command=:shutdown

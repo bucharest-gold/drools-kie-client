@@ -6,7 +6,7 @@ function waitForServer {
   C=50
   while [ $C -gt 0 ]
   do
-    grep "Deployed" drools.log
+    grep "Deployed" kie.log
     if [ $? -eq 0 ]; then
       echo "Server started."
       C=0
@@ -18,8 +18,22 @@ function waitForServer {
   done
 }
 
-docker pull jboss/kie-server-showcase:6.4.0.Final
-docker run -p 8080:8080 -d --name kie-server-showcase jboss/kie-server-showcase:6.4.0.Final  > drools.log 2>&1 &
+cd test/fixtures/kjar
+mvn clean install
+cd ../../../
+if [ ! -f "wildfly-8.2.1.Final.zip" ]
+then 
+  wget http://download.jboss.org/wildfly/8.2.1.Final/wildfly-8.2.1.Final.zip
+fi
+unzip wildfly-8.2.1.Final.zip
+if [ ! -f "kie-server-distribution-6.4.0.Final.zip" ]
+then 
+  wget http://download.jboss.org/drools/release/6.4.0.Final/kie-server-distribution-6.4.0.Final.zip
+fi
+unzip kie-server-distribution-6.4.0.Final.zip
+cp kie-server-6.4.0.Final-ee7.war wildfly-8.2.1.Final/standalone/deployments/
+./wildfly-8.2.1.Final/bin/add-user.sh -a -u kieserver -p kieserver1! -g admin,kie-server
+./wildfly-8.2.1.Final/bin/standalone.sh  -c standalone-full.xml -Dorg.kie.server.id=bgold-kie-server -Djava.net.preferIPv4Stack=true > kie.log 2>&1 &
 
 sleep 1
 

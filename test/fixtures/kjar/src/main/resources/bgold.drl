@@ -1,0 +1,6 @@
+rule 'bgoldrule'
+when
+	$name: String()
+then
+	System.out.println("Bgold " + $name);
+end

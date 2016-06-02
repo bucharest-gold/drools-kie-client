@@ -19,7 +19,7 @@ while true; do
 done
 
 npm run docs
-git clone https://github.com/bucharest-gold/drooks-kie-client.git $PUBLISH_DIR
+git clone https://github.com/bucharest-gold/drools-kie-client.git $PUBLISH_DIR
 cd $PUBLISH_DIR
 git checkout gh-pages
 mkdir 6.4.0

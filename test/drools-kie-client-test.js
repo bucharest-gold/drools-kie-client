@@ -39,15 +39,12 @@ test('The client should return the server information.', t => {
 test('The client should add one container.', t => {
 
   let container = {
-    "status": null,
-    "messages": [],
     "container-id": "bgold",
     "release-id": {
       "version": "1.0",
       "group-id": "org.bgold.kieserver",
       "artifact-id": "bgold"
-    },
-    "config-items": []
+    }
   };
 
   client.containerAdd(container)
@@ -114,15 +111,14 @@ test('The client should update scanner.', t => {
 test('The client should update the release.', t => {
 
   let release = {
-    "version": "1.1",
+    "version": "1.2",
     "group-id": "org.bgold.kieserver",
     "artifact-id": "bgold"
   };
 
   client.releaseUpdate('bgold', release)
     .then(x => {
-      console.log(x);
-      //t.equal(x.type, 'SUCCESS');
+      t.equal(x.type, 'SUCCESS');
       t.end();
     }).catch(e => console.log(e));
 

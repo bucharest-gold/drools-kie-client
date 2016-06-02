@@ -26,6 +26,8 @@ fi
 
 cd test/fixtures/kjar
 mvn clean install
+cd ../kjar2
+mvn clean install
 cd ../../../
 if [ ! -f "wildfly-8.2.1.Final.zip" ]
 then 

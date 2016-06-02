@@ -17,16 +17,18 @@
 'use strict';
 
 const test = require('tape');
-const client = require('../lib/drools-kie-client');
+let client = require('../lib/drools-kie-client');
+
 
 test('setup', t => {
   console.log('init.');
+  client = client({});
   t.end();
 });
 
 test('The client should return the server information.', t => {
 
-  client({}).info()
+  client.info()
     .then(x => {
       t.equal(x.msg, 'Kie Server info');
       t.end();
@@ -48,7 +50,7 @@ test('The client should add one container.', t => {
     "config-items": []
   };
 
-  client({}).containerAdd(container)
+  client.containerAdd(container)
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();
@@ -58,7 +60,7 @@ test('The client should add one container.', t => {
 
 test('The client should return information about one container.', (t) => {
 
-  client({}).container('bgold')
+  client.container('bgold')
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();
@@ -68,7 +70,7 @@ test('The client should return information about one container.', (t) => {
 
 test('The client should return the containers.', t => {
 
-  client({}).containers()
+  client.containers()
     .then(x => {
       t.equal(x.result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
       t.end();
@@ -77,7 +79,7 @@ test('The client should return the containers.', t => {
 });
 
 test('The client should get the release id information of the container.', t => {
-  client({}).release('bgold')
+  client.release('bgold')
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();
@@ -86,7 +88,7 @@ test('The client should get the release id information of the container.', t => 
 });
 
 test('The client should get the scanner information of the container.', t => {
-  client({}).scanner('bgold')
+  client.scanner('bgold')
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();
@@ -101,7 +103,7 @@ test('The client should update scanner.', t => {
     "poll-interval": 10000
   };
 
-  client({}).scannerUpdate('bgold', scanner)
+  client.scannerUpdate('bgold', scanner)
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();
@@ -117,7 +119,7 @@ test('The client should update the release.', t => {
     "artifact-id": "bgold"
   };
 
-  client({}).releaseUpdate('bgold', release)
+  client.releaseUpdate('bgold', release)
     .then(x => {
       console.log(x);
       //t.equal(x.type, 'SUCCESS');
@@ -135,7 +137,7 @@ test('The client should execute commands.', t => {
     ]
   };
 
-  client({}).executeCommand('bgold', commands)
+  client.executeCommand('bgold', commands)
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();
@@ -145,7 +147,7 @@ test('The client should execute commands.', t => {
 
 test('The client should remove one container.', t => {
 
-  client({}).containerDelete('bgold')
+  client.containerDelete('bgold')
     .then(x => {
       t.equal(x.type, 'SUCCESS');
       t.end();

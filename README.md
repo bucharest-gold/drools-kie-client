@@ -44,7 +44,7 @@ or higher.
 
 ## API Documentation
 
-http://bucharest-gold.github.io/drooks-kie-client/
+http://bucharest-gold.github.io/drools-kie-client/
 
 If you have the github rights to do it, you can publish the API documentation by running
 `./build/publish-docs.sh`. This script will generate the documentation, then clone this

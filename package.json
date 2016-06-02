@@ -34,6 +34,8 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
+    "ink-docstrap": "^1.2.1",
+    "jsdoc": "^3.4.0",
     "request": "^2.72.0"
   }
 }

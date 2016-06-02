@@ -4,6 +4,6 @@
   <groupId>org.bgold.kieserver</groupId>
   <artifactId>bgold</artifactId>
   <packaging>jar</packaging>
-  <version>1.2</version>
+  <version>1.0</version>
   <name>bgold</name>
 </project>

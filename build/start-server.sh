@@ -18,6 +18,12 @@ function waitForServer {
   done
 }
 
+if [ -f "kie-server-6.4.0.Final-ee6.war" ]
+then
+  rm *.war
+  rm -Rf wildfly-8.2.1.Final
+fi
+
 cd test/fixtures/kjar
 mvn clean install
 cd ../../../

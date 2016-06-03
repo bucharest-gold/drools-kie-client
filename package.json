@@ -1,6 +1,6 @@
 {
   "name": "drools-kie-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js client for Drools KIE server API.",
   "main": "index.js",
   "scripts": {

@@ -2,6 +2,9 @@
 
 Node.js client for Drools KIE server API.
 
+[![Build Status](https://travis-ci.org/bucharest-gold/drools-kie-client.svg?branch=master)](https://travis-ci.org/bucharest-gold/drools-kie-client)
+[![Coverage Status](https://coveralls.io/repos/github/bucharest-gold/drools-kie-client/badge.svg?branch=master)](https://coveralls.io/github/bucharest-gold/drools-kie-client?branch=master)
+
 This package provides a Node.js client for the [KIE server API][1].
 It is experimental and still a work in progress.
 
@@ -33,6 +36,17 @@ or higher.
     };
 
     client.containerAdd(container).then(x => console.log(x.msg));
+
+    let commands = {
+      "commands": [
+        { "insert": { "object": "testCommand" } },
+        { "fire-all-rules": {} }
+      ]
+    };
+
+    client.executeCommand('containerID', commands)
+    .then(x => console.log(x))
+    .catch(error => console.log(error));
 
 ## You can use to
 

@@ -27,15 +27,13 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "ink-docstrap": "^1.1.4",
+    "ink-docstrap": "^1.2.1",
     "istanbul": "^0.4.3",
     "jsdoc": "^3.4.0",
     "jshint": "^2.9.2",
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "ink-docstrap": "^1.2.1",
-    "jsdoc": "^3.4.0",
     "request": "^2.72.0"
   }
 }

@@ -5,6 +5,7 @@ node_js:
   - "5"
   - "6"
 before_script:
+   - npm install -g coveralls 
    - ./build/start-server.sh
 script:
    - make ci
@@ -15,3 +16,5 @@ notifications:
 branches:
   only:
     - master
+after_success:
+  - cat ./coverage/lcov.info | coveralls

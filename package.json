@@ -26,6 +26,12 @@
     "node": ">= 5.0.0"
   },
   "license": "Apache-2.0",
+  "homepage": "https://github.com/bucharest-gold/drools-kie-client#readme",
+  "repository": {
+    "type": "git",
+    "url": "bucharest-gold/drools-kie-client"
+  },
+  "bugs": "https://github.com/bucharest-gold/drools-kie-client/issues",
   "devDependencies": {
     "ink-docstrap": "^1.2.1",
     "istanbul": "^0.4.3",

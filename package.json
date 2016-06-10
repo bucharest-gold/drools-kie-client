@@ -6,6 +6,7 @@
   "scripts": {
     "test": "tape test/*-test.js",
     "lint": "jshint index.js lib/*.js test/*.js",
+    "format": "semistandard",
     "coverage": "./node_modules/.bin/istanbul cover tape -- test/**.js",
     "docs": "./node_modules/.bin/jsdoc -d docs -t ./node_modules/ink-docstrap/template -R README.md lib/drools-kie-client.js"
   },
@@ -23,7 +24,7 @@
   ],
   "author": "Red Hat, Inc.",
   "engines": {
-    "node": ">= 5.0.0"
+    "node": ">= 4.0.0"
   },
   "license": "Apache-2.0",
   "homepage": "https://github.com/bucharest-gold/drools-kie-client#readme",
@@ -37,6 +38,7 @@
     "istanbul": "^0.4.3",
     "jsdoc": "^3.4.0",
     "jshint": "^2.9.2",
+    "semistandard": "^8.0.0",
     "tape": "^4.5.1"
   },
   "dependencies": {

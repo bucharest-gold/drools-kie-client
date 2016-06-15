@@ -11,7 +11,14 @@ It is experimental and still a work in progress.
 N.B. This module uses ES6 language features, and as such depends on Node.js version 5.x
 or higher.
 
+## Contributing
+
+Please read the [contributing guide](./CONTRIBUTING.md)
+
+## Installation
+
     npm install drools-kie-client -S
+
 
 ## Usage
     let client = require('drools-kie-client');
@@ -65,15 +72,5 @@ If you have the github rights to do it, you can publish the API documentation by
 repository into a temporary directory, checkout the `gh-pages` branch and update it with
 the newly generated documentation.
 
-## Development & Testing
-
-To run the tests, you'll need to run`./build/start-server.sh`. This script will download and start
-wildfly 8x and kie-server distribution.
-
-Then just run the tests.
-
-    make test
-
-To stop the server, run `./build/stop-server.sh`.
 
 [1]: http://docs.jboss.org/drools/release/6.4.0.Final/drools-docs/html/ch22.html#d0e24633

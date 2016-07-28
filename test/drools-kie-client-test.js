@@ -17,122 +17,118 @@
 'use strict';
 
 const test = require('tape');
-let client = require('../lib/drools-kie-client');
+const client = require('../index');
 
-test('setup', t => {
-  console.log('init.');
-  client = client({});
-  t.end();
-});
+const options = {
+  'baseUrl': 'http://localhost:8080/kie-server-6.4.0.Final-ee7',
+  'username': 'kieserver',
+  'password': 'kieserver1!'
+};
 
-test('The client should return the server information.', t => {
-  client.info()
+test('Should return the server information.', t => {
+  client.info(options)
     .then(x => {
-      t.equal(x.msg, 'Kie Server info');
+      t.equal(JSON.parse(x).msg, 'Kie Server info');
       t.end();
     }).catch(e => console.log(e));
 });
 
-test('The client should add one container.', t => {
-  let container = {
-    'container-id': 'bgold',
-    'release-id': {
-      'version': '1.0',
-      'group-id': 'org.bgold.kieserver',
-      'artifact-id': 'bgold'
-    }
-  };
+// test('The client should add one container.', t => {
+//   let container = {
+//     'container-id': 'bgold',
+//     'release-id': {
+//       'version': '1.0',
+//       'group-id': 'org.bgold.kieserver',
+//       'artifact-id': 'bgold'
+//     }
+//   };
 
-  client.containerAdd(container)
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+//   client.containerAdd(container)
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should return information about one container.', (t) => {
-  client.container('bgold')
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+// test('The client should return information about one container.', (t) => {
+//   client.container('bgold')
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should return the containers.', t => {
-  client.containers()
-    .then(x => {
-      t.equal(x.result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
-      t.end();
-    }).catch(e => console.log(e));
-});
+// test('The client should return the containers.', t => {
+//   client.containers()
+//     .then(x => {
+//       t.equal(x.result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should get the release id information of the container.', t => {
-  client.release('bgold')
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+// test('The client should get the release id information of the container.', t => {
+//   client.release('bgold')
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should get the scanner information of the container.', t => {
-  client.scanner('bgold')
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+// test('The client should get the scanner information of the container.', t => {
+//   client.scanner('bgold')
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should update scanner.', t => {
-  let scanner = {
-    'status': 'STARTED',
-    'poll-interval': 10000
-  };
+// test('The client should update scanner.', t => {
+//   let scanner = {
+//     'status': 'STARTED',
+//     'poll-interval': 10000
+//   };
 
-  client.scannerUpdate('bgold', scanner)
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+//   client.scannerUpdate('bgold', scanner)
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should update the release.', t => {
-  let release = {
-    'version': '1.2',
-    'group-id': 'org.bgold.kieserver',
-    'artifact-id': 'bgold'
-  };
+// test('The client should update the release.', t => {
+//   let release = {
+//     'version': '1.2',
+//     'group-id': 'org.bgold.kieserver',
+//     'artifact-id': 'bgold'
+//   };
 
-  client.releaseUpdate('bgold', release)
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+//   client.releaseUpdate('bgold', release)
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should execute commands.', t => {
-  let commands = {
-    'commands': [
-      { 'insert': { 'object': 'testBgold' } },
-      { 'fire-all-rules': {} }
-    ]
-  };
+// test('The client should execute commands.', t => {
+//   let commands = {
+//     'commands': [
+//       { 'insert': { 'object': 'testBgold' } },
+//       { 'fire-all-rules': {} }
+//     ]
+//   };
 
-  client.executeCommand('bgold', commands)
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+//   client.executeCommand('bgold', commands)
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('The client should remove one container.', t => {
-  client.containerDelete('bgold')
-    .then(x => {
-      t.equal(x.type, 'SUCCESS');
-      t.end();
-    }).catch(e => console.log(e));
-});
+// test('The client should remove one container.', t => {
+//   client.containerDelete('bgold')
+//     .then(x => {
+//       t.equal(x.type, 'SUCCESS');
+//       t.end();
+//     }).catch(e => console.log(e));
+// });
 
-test('teardown', t => {
-  console.log('done.');
-  t.end();
-});

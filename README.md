@@ -68,7 +68,7 @@ Please read the [contributing guide](./CONTRIBUTING.md)
 http://bucharest-gold.github.io/drools-kie-client/
 
 If you have the github rights to do it, you can publish the API documentation by running
-`./build/publish-docs.sh`. This script will generate the documentation, then clone this
+`./scripts/publish-docs.sh`. This script will generate the documentation, then clone this
 repository into a temporary directory, checkout the `gh-pages` branch and update it with
 the newly generated documentation.
 

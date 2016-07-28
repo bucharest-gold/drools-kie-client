@@ -42,6 +42,6 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "request": "^2.72.0"
+    "roi": "^0.7.0"
   }
 }

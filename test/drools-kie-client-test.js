@@ -1,7 +1,7 @@
 /**
  * Copyright 2016 Red Hat, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -19,116 +19,118 @@
 const test = require('tape');
 const client = require('../index');
 
-const options = {
-  'baseUrl': 'http://localhost:8080/kie-server-6.4.0.Final-ee7',
-  'username': 'kieserver',
-  'password': 'kieserver1!'
-};
+function getOptions () {
+  const options = {
+    'baseUrl': 'http://localhost:8080/kie-server-6.4.0.Final-ee7',
+    'username': 'kieserver',
+    'password': 'kieserver1!'
+  };
+  return options;
+}
 
 test('Should return the server information.', t => {
-  client.info(options)
+  client.info(getOptions())
     .then(x => {
-      t.equal(JSON.parse(x).msg, 'Kie Server info');
+      t.equal(JSON.parse(x.body).msg, 'Kie Server info');
       t.end();
     }).catch(e => console.log(e));
 });
 
-// test('The client should add one container.', t => {
-//   let container = {
-//     'container-id': 'bgold',
-//     'release-id': {
-//       'version': '1.0',
-//       'group-id': 'org.bgold.kieserver',
-//       'artifact-id': 'bgold'
-//     }
-//   };
+test('The client should add one container.', t => {
+  let container = {
+    'container-id': 'bgold',
+    'release-id': {
+      'version': '1.0',
+      'group-id': 'org.bgold.kieserver',
+      'artifact-id': 'bgold'
+    }
+  };
 
-//   client.containerAdd(container)
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+  client.containerAdd(getOptions(), JSON.parse(JSON.stringify(container)))
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should return information about one container.', (t) => {
-//   client.container('bgold')
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+test('Should return information about one container.', (t) => {
+  client.container(getOptions(), 'bgold')
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should return the containers.', t => {
-//   client.containers()
-//     .then(x => {
-//       t.equal(x.result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+test('Should return the containers.', t => {
+  client.containers(getOptions())
+    .then(x => {
+      t.equal(JSON.parse(x.body).result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should get the release id information of the container.', t => {
-//   client.release('bgold')
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+test('Should get the release id information of the container.', t => {
+  client.release(getOptions(), 'bgold')
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should get the scanner information of the container.', t => {
-//   client.scanner('bgold')
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+test('Should get the scanner information of the container.', t => {
+  client.scanner(getOptions(), 'bgold')
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should update scanner.', t => {
-//   let scanner = {
-//     'status': 'STARTED',
-//     'poll-interval': 10000
-//   };
+test('Should update scanner.', t => {
+  let scanner = {
+    'status': 'STARTED',
+    'poll-interval': 10000
+  };
 
-//   client.scannerUpdate('bgold', scanner)
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+  client.scannerUpdate(getOptions(), 'bgold', JSON.parse(JSON.stringify(scanner)))
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should update the release.', t => {
-//   let release = {
-//     'version': '1.2',
-//     'group-id': 'org.bgold.kieserver',
-//     'artifact-id': 'bgold'
-//   };
+test('Should update the release.', t => {
+  let release = {
+    'version': '1.2',
+    'group-id': 'org.bgold.kieserver',
+    'artifact-id': 'bgold'
+  };
 
-//   client.releaseUpdate('bgold', release)
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+  client.releaseUpdate(getOptions(), 'bgold', release)
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should execute commands.', t => {
-//   let commands = {
-//     'commands': [
-//       { 'insert': { 'object': 'testBgold' } },
-//       { 'fire-all-rules': {} }
-//     ]
-//   };
+test('Should execute commands.', t => {
+  let commands = {
+    'commands': [
+      { 'insert': { 'object': 'testBgold' } },
+      { 'fire-all-rules': {} }
+    ]
+  };
 
-//   client.executeCommand('bgold', commands)
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
+  client.executeCommand(getOptions(), 'bgold', commands)
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});
 
-// test('The client should remove one container.', t => {
-//   client.containerDelete('bgold')
-//     .then(x => {
-//       t.equal(x.type, 'SUCCESS');
-//       t.end();
-//     }).catch(e => console.log(e));
-// });
-
+test('Should remove one container.', t => {
+  client.containerDelete(getOptions(), 'bgold')
+    .then(x => {
+      t.equal(JSON.parse(x.body).type, 'SUCCESS');
+      t.end();
+    }).catch(e => console.log(e));
+});

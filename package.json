@@ -1,18 +1,17 @@
 {
   "name": "drools-kie-client",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Node.js client for Drools KIE server API.",
   "main": "index.js",
   "scripts": {
     "test": "tape test/*-test.js",
-    "lint": "jshint index.js lib/*.js test/*.js",
+    "lint": "jshint index.js test/*.js",
     "format": "semistandard",
     "coverage": "./node_modules/.bin/istanbul cover tape -- test/**.js",
     "docs": "./node_modules/.bin/jsdoc -d docs -t ./node_modules/ink-docstrap/template -R README.md lib/drools-kie-client.js"
   },
   "files": [
     "index.js",
-    "lib",
     "test",
     "doc"
   ],
@@ -42,6 +41,6 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "roi": "^0.7.0"
+    "roi": "^0.9.0"
   }
 }

@@ -67,8 +67,8 @@ function containerAdd (options, containerRepresentation) {
 * @returns {Promise} A promise that will resolve with 204 No Content if the delete is successful.
 */
 function containerDelete (options, id) {
-  options.endpoint = options.baseUrl + CONTAINERS;
-  return roi.del(options, id);
+  options.endpoint = options.baseUrl + CONTAINERS + id;
+  return roi.del(options);
 }
 
 /**

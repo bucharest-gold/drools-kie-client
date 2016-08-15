@@ -33,7 +33,10 @@ test('Should return the server information.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).msg, 'Kie Server info');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('The client should add one container.', t => {
@@ -50,7 +53,10 @@ test('The client should add one container.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should return information about one container.', (t) => {
@@ -58,7 +64,10 @@ test('Should return information about one container.', (t) => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should return the containers.', t => {
@@ -66,7 +75,10 @@ test('Should return the containers.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should get the release id information of the container.', t => {
@@ -74,7 +86,10 @@ test('Should get the release id information of the container.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should get the scanner information of the container.', t => {
@@ -82,7 +97,10 @@ test('Should get the scanner information of the container.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should update scanner.', t => {
@@ -95,7 +113,10 @@ test('Should update scanner.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should update the release.', t => {
@@ -109,7 +130,10 @@ test('Should update the release.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should execute commands.', t => {
@@ -124,7 +148,10 @@ test('Should execute commands.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });
 
 test('Should remove one container.', t => {
@@ -132,5 +159,8 @@ test('Should remove one container.', t => {
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
       t.end();
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
 });

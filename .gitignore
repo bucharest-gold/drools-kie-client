@@ -9,3 +9,5 @@ kie-server-distribution-6.4.0.Final.zip
 bgold-kie-server.xml
 test/fixtures/kjar/target/
 wildfly-8.2.1.Final/
+test/fixtures/kjar2/target/bgold-1.2.jar
+test/fixtures/kjar2/target/maven-archiver/pom.properties

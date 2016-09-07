@@ -18,18 +18,18 @@ Discussions can be done via github issues or IRC channel #brass-monkey.
 Fork the project [on GitHub](https://github.com/bucharest-gold/drools-kie-client)
 and check out your copy locally.
 
-```shell
-$ git clone git@github.com:username/drools-kie-client.git
-$ cd drools-kie-client
-$ git remote add upstream https://github.com/bucharest-gold/drools-kie-client.git
+```
+git clone git@github.com:username/drools-kie-client.git
+cd drools-kie-client
+git remote add upstream https://github.com/bucharest-gold/drools-kie-client.git
 ```
 
 ### Branch
 
 Create a feature branch and start hacking:
 
-```shell
-$ git checkout -b my-contrib-branch
+```
+git checkout -b my-contrib-branch
 ```
 
 ### Commit messages
@@ -62,49 +62,30 @@ nicely even when it is indented.
 
 Use `git rebase` to sync your work from time to time.
 
-```shell
-$ git fetch upstream
-$ git rebase upstream/master
+```
+git fetch upstream
+git rebase upstream/master
 ```
 
-### Start server | Code - Test - Code - Test... | Stop server
+### Development cycle
 
-Bug fixes and features should come with tests. Add your tests in the
-`test/drools-kie-client-test.js` file.
+Bug fixes and features should come with tests.
+The tests are on `test` directory.
 
-To write the tests you will need the server running, so run this script:
+`Maven is required`
 
-```shell
-$ ./scripts/start-server.sh
 ```
-This will download the kie-server and wildfly, extract, add an admin user
-and start the wildfly with kie-server.
-
-Then you can start coding and watching the results of the tests with this command:
-
-```shell
-$ make
+./scripts/start-server.sh
+make ci
+./scripts/stop-server.sh
 ```
 
-You can keep coding, testing and building with
+For development cleanup you can run `./dev_cleanup.sh`
 
-```shell
-$ make
+### Push
+
 ```
-
-Then to stop the server by running this script:
-
-```shell
-$ ./scripts/stop-server.sh
-```
-
-Make sure the jshint and semistandard are happy and that all tests pass. Please, do not submit
-patches that fail either check.
-
-### Step 6: Push
-
-```shell
-$ git push origin my-contrib-branch
+git push origin my-contrib-branch
 ```
 
 Go to https://github.com/yourusername/drools-kie-client and select your feature branch.

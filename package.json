@@ -4,10 +4,10 @@
   "description": "Node.js client for Drools KIE server API.",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*-test.js",
-    "lint": "eslint index.js test/*.js",
+    "test": "tape test/drools-kie-client-test.js",
+    "lint": "eslint index.js test/drools-kie-client-test.js.js",
     "prepublish": "nsp check",
-    "coverage": "./node_modules/.bin/istanbul cover tape -- test/**.js",
+    "coverage": "istanbul cover tape test/drools-kie-client-test.js",
     "docs": "./node_modules/.bin/jsdoc -d docs -t ./node_modules/ink-docstrap/template -R README.md index.js"
   },
   "files": [
@@ -40,7 +40,7 @@
     "eslint-plugin-react": "^6.1.2",
     "eslint-plugin-standard": "^2.0.0",
     "ink-docstrap": "^1.2.1",
-    "istanbul": "^0.4.3",
+    "istanbul": "^0.4.5",
     "jsdoc": "^3.4.0",
     "nsp": "^2.6.1",
     "tape": "^4.5.1"

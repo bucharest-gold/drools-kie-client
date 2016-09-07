@@ -1,19 +1,19 @@
 # drools-kie-client
 
+[![Build Status](https://travis-ci.org/bucharest-gold/drools-kie-client.svg?branch=master)](https://travis-ci.org/bucharest-gold/drools-kie-client)
+[![dependencies Status](https://david-dm.org/bucharest-gold/drools-kie-client/status.svg)](https://david-dm.org/bucharest-gold/drools-kie-client)
+
+[![NPM](https://nodei.co/npm/drools-kie-client.png)](https://npmjs.org/package/drools-kie-client)
+
 Node.js client for Drools KIE server API.
 
-[![Build Status](https://travis-ci.org/bucharest-gold/drools-kie-client.svg?branch=master)](https://travis-ci.org/bucharest-gold/drools-kie-client)
-[![Coverage Status](https://coveralls.io/repos/github/bucharest-gold/drools-kie-client/badge.svg?branch=master)](https://coveralls.io/github/bucharest-gold/drools-kie-client?branch=master)
-
-This package provides a Node.js client for the [KIE server API][1].
-It is experimental and still a work in progress.
-
-N.B. This module uses ES6 language features, and as such depends on Node.js version 5.x
-or higher.
-
-## Contributing
-
-Please read the [contributing guide](./CONTRIBUTING.md)
+|                 | Project Info  |
+| --------------- | ------------- |
+| License:        | Apache-2.0 |
+| Build:          | make |
+| Documentation:  | http://bucharest-gold.github.io/drools-kie-client |
+| Issue tracker:  | https://github.com/bucharest-gold/drools-kie-client/issues |
+| Engines:        | Node.js 4.x, 5.x, 6.x |
 
 ## Installation
 
@@ -21,7 +21,7 @@ Please read the [contributing guide](./CONTRIBUTING.md)
 
 
 ## Usage
-    let client = require('drools-kie-client');
+    const client = require('drools-kie-client');
 
     const options = {
       baseUrl: 'http://host:port/kie_server_context',
@@ -33,7 +33,7 @@ Please read the [contributing guide](./CONTRIBUTING.md)
 
     client.info().then(x => console.log(x.msg));
 
-    let container = {
+    const container = {
       "container-id": "bgold",
       "release-id": {
         "version": "1.0",
@@ -44,7 +44,7 @@ Please read the [contributing guide](./CONTRIBUTING.md)
 
     client.containerAdd(container).then(x => console.log(x.msg));
 
-    let commands = {
+    const commands = {
       "commands": [
         { "insert": { "object": "testCommand" } },
         { "fire-all-rules": {} }
@@ -63,14 +63,8 @@ Please read the [contributing guide](./CONTRIBUTING.md)
 * View and update release.
 * View and update scanner.
 
-## API Documentation
-
-http://bucharest-gold.github.io/drools-kie-client/
-
-If you have the github rights to do it, you can publish the API documentation by running
-`./scripts/publish-docs.sh`. This script will generate the documentation, then clone this
-repository into a temporary directory, checkout the `gh-pages` branch and update it with
-the newly generated documentation.
-
-
 [1]: http://docs.jboss.org/drools/release/6.4.0.Final/drools-docs/html/ch22.html#d0e24633
+
+## Contributing
+
+Please read the [contributing guide](./CONTRIBUTING.md)

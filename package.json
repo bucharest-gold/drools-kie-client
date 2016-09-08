@@ -4,7 +4,7 @@
   "description": "Node.js client for Drools KIE server API.",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/drools-kie-client-test.js",
+    "test": "tape test/drools-kie-client-test.js | tap-spec",
     "lint": "eslint index.js test/drools-kie-client-test.js.js",
     "prepublish": "nsp check",
     "coverage": "istanbul cover tape test/drools-kie-client-test.js",
@@ -43,6 +43,7 @@
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.0",
     "nsp": "^2.6.1",
+    "tap-spec": "^4.1.1",
     "tape": "^4.5.1"
   },
   "dependencies": {

@@ -1,6 +1,8 @@
 # drools-kie-client
 
+[![Coverage Status](https://coveralls.io/repos/github/bucharest-gold/drools-kie-client/badge.svg?branch=master)](https://coveralls.io/github/bucharest-gold/drools-kie-client?branch=master)
 [![Build Status](https://travis-ci.org/bucharest-gold/drools-kie-client.svg?branch=master)](https://travis-ci.org/bucharest-gold/drools-kie-client)
+[![Known Vulnerabilities](https://snyk.io/test/npm/drools-kie-client/badge.svg)](https://snyk.io/test/npm/drools-kie-client)
 [![dependencies Status](https://david-dm.org/bucharest-gold/drools-kie-client/status.svg)](https://david-dm.org/bucharest-gold/drools-kie-client)
 
 [![NPM](https://nodei.co/npm/drools-kie-client.png)](https://npmjs.org/package/drools-kie-client)

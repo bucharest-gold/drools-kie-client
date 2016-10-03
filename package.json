@@ -9,7 +9,7 @@
     "prepublish": "nsp check",
     "coverage": "istanbul cover tape test/drools-kie-client-test.js",
     "docs": "./node_modules/.bin/jsdoc -d docs -t ./node_modules/ink-docstrap/template -R README.md index.js",
-    "dependencyCheck": "szero . --ci=true"
+    "dependencyCheck": "szero . --ci"
   },
   "files": [
     "index.js",

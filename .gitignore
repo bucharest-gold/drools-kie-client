@@ -3,11 +3,11 @@ node_modules
 coverage
 docs
 .vscode
-wildfly-8.2.1.Final.zip
-kie-server-distribution-6.4.0.Final.zip
+wildfly-10.0.0.Final.zip
+kie-server-distribution-6.5.0.Final.zip
 *.war
 bgold-kie-server.xml
 test/fixtures/kjar/target/
-wildfly-8.2.1.Final/
+wildfly-10.0.0.Final/
 test/fixtures/kjar2/target/bgold-1.2.jar
 test/fixtures/kjar2/target/maven-archiver/pom.properties

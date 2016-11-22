@@ -21,7 +21,7 @@ const client = require('../index');
 
 function getOptions () {
   const options = {
-    'baseUrl': 'http://localhost:8080/kie-server-6.4.0.Final-ee7',
+    'baseUrl': 'http://localhost:8080/kie-server-6.5.0.Final-ee7',
     'username': 'kieserver',
     'password': 'kieserver1!'
   };

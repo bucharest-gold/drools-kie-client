@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -Rf wildfly-8.2.1.Final
+rm -Rf wildfly-10.0.0.Final
 rm *.war
 rm kie.log
-rm bgold-kie-server.xml 
+rm bgold-kie-server.xml

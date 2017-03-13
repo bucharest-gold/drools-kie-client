@@ -1,4 +1,4 @@
-ci: lint
+ci: test
 	npm run prepublish
 	npm run docs
 

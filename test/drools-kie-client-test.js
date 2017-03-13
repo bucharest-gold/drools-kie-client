@@ -28,7 +28,7 @@ function getOptions () {
   return options;
 }
 
-test('Should return the server information.', t => {
+test('Should return the server information.', (t) => {
   client.info(getOptions())
     .then(x => {
       t.equal(JSON.parse(x.body).msg, 'Kie Server info');
@@ -39,8 +39,8 @@ test('Should return the server information.', t => {
     });
 });
 
-test('The client should add one container.', t => {
-  let container = {
+test('The client should add one container.', (t) => {
+  const container = {
     'container-id': 'bgold',
     'release-id': {
       'version': '1.0',
@@ -70,7 +70,7 @@ test('Should return information about one container.', (t) => {
     });
 });
 
-test('Should return the containers.', t => {
+test('Should return the containers.', (t) => {
   client.containers(getOptions())
     .then(x => {
       t.equal(JSON.parse(x.body).result['kie-containers']['kie-container'][0]['container-id'], 'bgold');
@@ -92,7 +92,7 @@ test('Should get the release id information of the container.', t => {
     });
 });
 
-test('Should get the scanner information of the container.', t => {
+test('Should get the scanner information of the container.', (t) => {
   client.scanner(getOptions(), 'bgold')
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');
@@ -103,8 +103,8 @@ test('Should get the scanner information of the container.', t => {
     });
 });
 
-test('Should update scanner.', t => {
-  let scanner = {
+test('Should update scanner.', (t) => {
+  const scanner = {
     'status': 'STARTED',
     'poll-interval': 10000
   };
@@ -119,8 +119,8 @@ test('Should update scanner.', t => {
     });
 });
 
-test('Should update the release.', t => {
-  let release = {
+test('Should update the release.', (t) => {
+  const release = {
     'version': '1.2',
     'group-id': 'org.bgold.kieserver',
     'artifact-id': 'bgold'
@@ -136,8 +136,8 @@ test('Should update the release.', t => {
     });
 });
 
-test('Should execute commands.', t => {
-  let commands = {
+test('Should execute commands.', (t) => {
+  const commands = {
     'commands': [
       { 'insert': { 'object': 'testBgold' } },
       { 'fire-all-rules': {} }
@@ -154,7 +154,7 @@ test('Should execute commands.', t => {
     });
 });
 
-test('Should remove one container.', t => {
+test('Should remove one container.', (t) => {
   client.containerDelete(getOptions(), 'bgold')
     .then(x => {
       t.equal(JSON.parse(x.body).type, 'SUCCESS');

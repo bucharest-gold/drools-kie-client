@@ -105,7 +105,7 @@ function containers (options) {
 * @returns {Promise} A promise that will resolve with release information.
 */
 function release (options, id) {
-  options.endpoint = options.baseUrl + CONTAINERS + id + '/release-id';
+  options.endpoint = `${options.baseUrl}${CONTAINERS}${id}/release-id`;
   return roi.get(options);
 }
 
@@ -118,7 +118,7 @@ function release (options, id) {
 * @returns {Promise} A promise that will resolve with release information.
 */
 function releaseUpdate (options, id, releaseRepresentation) {
-  options.endpoint = options.baseUrl + CONTAINERS + id + '/release-id';
+  options.endpoint = `${options.baseUrl}${CONTAINERS}${id}/release-id`;
   return roi.post(options, releaseRepresentation);
 }
 
@@ -131,7 +131,7 @@ function releaseUpdate (options, id, releaseRepresentation) {
 * @returns {Promise} A promise that will resolve with scanner information.
 */
 function scannerUpdate (options, id, scannerRepresentation) {
-  options.endpoint = options.baseUrl + CONTAINERS + id + '/scanner';
+  options.endpoint = `${options.baseUrl}${CONTAINERS}${id}/scanner`;
   return roi.post(options, scannerRepresentation);
 }
 
@@ -143,7 +143,7 @@ function scannerUpdate (options, id, scannerRepresentation) {
 * @returns {Promise} A promise that will resolve with release information.
 */
 function scanner (options, id) {
-  options.endpoint = options.baseUrl + CONTAINERS + id + '/scanner';
+  options.endpoint = `${options.baseUrl}${CONTAINERS}${id}/scanner`;
   return roi.get(options);
 }
 
@@ -156,6 +156,6 @@ function scanner (options, id) {
 * @returns {Promise} A promise that will resolve with information about executed command(s).
 */
 function executeCommand (options, id, commandRepresentation) {
-  options.endpoint = options.baseUrl + CONTAINERS + 'instances/' + id;
+  options.endpoint = `${options.baseUrl}${CONTAINERS}instances/${id}`;
   return roi.post(options, commandRepresentation);
 }

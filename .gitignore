@@ -3,6 +3,7 @@ node_modules
 coverage
 docs
 .vscode
+.nyc_output/
 wildfly-10.0.0.Final.zip
 kie-server-distribution-6.5.0.Final.zip
 *.war

@@ -13,7 +13,7 @@ script:
 after_script:
    - ./scripts/stop-server.sh
 notifications:
-  irc: "irc.freenode.org#brass-monkey"
+  irc: "irc.freenode.org#bucharest-gold"
 branches:
   only:
     - master
